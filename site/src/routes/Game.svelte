@@ -1,12 +1,12 @@
 <script lang="ts">
-    import { types } from '../functions/src/types';
-    import GuessDisplay from './GuessDisplay.svelte';
-    import { checkGuess, getWord } from './helper/gameFunctions';
+    import { types } from '../../functions/src/types';
+    import GuessDisplay from '../components/GuessDisplay.svelte';
+    import { checkGuess, getWord } from '../helper/gameFunctions';
     import { fade } from 'svelte/transition';
     import { getFunctions, httpsCallable } from "firebase/functions";
     import { useFocus, navigate } from "svelte-navigator";
 
-    import HintButton from './HintButton.svelte';
+    import HintButton from '../components/HintButton.svelte';
 
     let guesses: Array<Array<{value: string, code: types.Mark}>> = [];
     let lastGuess: string | undefined;

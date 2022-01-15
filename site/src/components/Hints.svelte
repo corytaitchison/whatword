@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { types } from '../functions/src/types';
+    import { types } from '../../functions/src/types';
 
     export let guesses: Array<Array<{value: string, code: types.Mark}>>; 
 

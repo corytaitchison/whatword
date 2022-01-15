@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { types } from '../functions/src/types';
+    import type { types } from '../../functions/src/types';
     import { fade } from 'svelte/transition';
 
     export let guess: Array<{value: string, code: types.Mark}>;

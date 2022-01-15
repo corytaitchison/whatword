@@ -4,10 +4,10 @@
     // Navigation routing
     import { useFocus, navigate } from 'svelte-navigator';
     // Firestore database
-    import { db } from "./firebase";
+    import { db } from "../helper/firebase";
     import { query, collection, getDocs, getDoc, doc } from "firebase/firestore";
     // Components
-    import Loader from './Loader.svelte';
+    import Loader from '../components/Loader.svelte';
 
     // Props 
     export let listID: string | null = null;

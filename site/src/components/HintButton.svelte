@@ -1,7 +1,7 @@
 <script lang="ts">
     import { fade } from 'svelte/transition';
     import { getContext } from 'svelte';
-    import type { types } from '../functions/src/types';
+    import type { types } from '../../functions/src/types';
     import { library } from '@fortawesome/fontawesome-svg-core';
     import { faFont } from '@fortawesome/free-solid-svg-icons';
     import { FontAwesomeIcon } from 'fontawesome-svelte';
