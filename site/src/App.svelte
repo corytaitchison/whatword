@@ -57,6 +57,16 @@
 		<Route path="list/:listID" component="{Playlists}" />
 		<Route path="about"> 
 			<div style="margin: 3em">			
+				A clone of the game <a href="https://www.powerlanguage.co.uk/wordle/">Wordle</a>. 
+				<br> 
+				<a href="https://github.com/corytaitchison/whatword">Github</a>. <a href="mailto:contact@whatword.xyz">Contact</a>.
+			</div>
+            <button on:click={() => navigate("/")}>
+                Home
+            </button>
+		</Route>
+		<Route path="legal"> 
+			<div style="margin: 3em">			
 				These pages don't exist yet!
 			</div>
             <button on:click={() => navigate("/")}>
@@ -70,7 +80,7 @@
 	<ProfileButton {auth} {login} {user} />
 	{/if}
 	<footer>
-		<a href="/about">About</a>. <a href="/about">Privacy</a>. <a href="/about">Terms</a>.
+		<a href="/about">About</a>. <a href="/legal">Privacy</a>. <a href="/legal">Terms</a>.
 	</footer>
 </main>
 </Modal>
