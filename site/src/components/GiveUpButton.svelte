@@ -1,12 +1,10 @@
 <script lang="ts">
     import { fade } from 'svelte/transition';
     import { getContext } from 'svelte';
-    import type { types } from '../../functions/src/types';
     import { library } from '@fortawesome/fontawesome-svg-core';
     import { faEye } from '@fortawesome/free-solid-svg-icons';
     import { FontAwesomeIcon } from 'fontawesome-svelte';
 
-    import Hints from './Hints.svelte';
     import GiveUp from './GiveUp.svelte'
 
     export let word: string | undefined;
