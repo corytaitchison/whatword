@@ -7,6 +7,7 @@
     import { useFocus, navigate } from "svelte-navigator";
 
     import HintButton from '../components/HintButton.svelte';
+    import GiveUpButton from '../components/GiveUpButton.svelte';
 
     let guesses: Array<Array<{value: string, code: types.Mark}>> = [];
     let lastGuess: string | undefined;
@@ -97,6 +98,11 @@
         {/each}
     </div>
     <HintButton {guesses} />
+    
+    {#if guesses.length >= 1} 
+        <GiveUpButton {word} />
+    {/if}
+
     {#if won}
         <div 
             in:fade="{{duration: 300, delay:500}}"
