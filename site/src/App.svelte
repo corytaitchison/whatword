@@ -109,6 +109,7 @@
 		bottom: 1em;
 		width: 100%;
 		left: 0;
+		z-index: 10;
 	}
 
 	.accent {

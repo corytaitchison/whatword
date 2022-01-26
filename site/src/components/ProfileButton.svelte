@@ -52,6 +52,8 @@
         
         color: var(--color-bg-main);
         font-size: 2em;
+
+        z-index: 20;
     }
 
     #profileButton:hover {

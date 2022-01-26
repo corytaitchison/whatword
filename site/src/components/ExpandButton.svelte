@@ -16,7 +16,7 @@
     library.add(faPlus);
 </script>
 
-<div id="expandDiv" on:mouseenter={() => onHover(true)} on:mouseleave={() => onHover(false)}>
+<div id="expandDiv" on:mouseenter={() => onHover(true)}>
 
 {#if open} 
     <div id="buttonList">
@@ -24,7 +24,10 @@
     </div>
 {/if}
 
-<button transition:fade id="expandButton" class={open ? "open" : "closed"} on:click={() => expand(!open)}>
+<button 
+    transition:fade id="expandButton" 
+    class={open ? "open" : "closed"} 
+    on:click={() => expand(!open)}>
     <FontAwesomeIcon icon={faPlus} />
 </button>
 
@@ -35,6 +38,7 @@
         position: fixed;
         bottom: 1rem;
         right: 1rem;
+        z-index: 20;
     }
 
     #buttonList {
@@ -63,6 +67,8 @@
         cursor: pointer;
 
         transition: all 0.5s;
+
+        z-index: 20;
     }
 
     #expandButton:not(.open):hover {
