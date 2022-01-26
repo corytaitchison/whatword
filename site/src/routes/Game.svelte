@@ -99,8 +99,20 @@
         } else {
             navigate("/");
         }
-
     }
+
+    // New random word
+    const randomRedirect = () => {
+        const randID = Math.floor(Math.random() * maxID) - 1;
+        navigate(`/play/${randID}`);
+        won = false;
+        gaveUp = false;
+        guesses = [];
+        lastGuess = undefined;
+        word = undefined;
+        currentGuess = "";
+    };
+
 </script>
 
 <div id="Game" in:fade="{{duration: 300, delay:500}}" out:fade>
@@ -131,6 +143,9 @@
             <p>The word was:
             <h3 style="text-transform: uppercase;">{word}</h3>
             {/if}
+            <button on:click={randomRedirect}>
+                New Word
+            </button>
             <button on:click={() => navigate("/")}>
                 Home
             </button>
@@ -243,5 +258,9 @@
             margin: 1rem 0.5rem 1rem 0.5rem;
             max-width: calc(100% - 1rem);
         }
+    }
+
+    button {
+        width: 10em;
     }
 </style>
