@@ -8,6 +8,7 @@
 
     import HintButton from '../components/HintButton.svelte';
     import GiveUpButton from '../components/GiveUpButton.svelte';
+    import ExpandButton from '../components/ExpandButton.svelte';
 
     let guesses: Array<Array<{value: string, code: types.Mark}>> = [];
     let lastGuess: string | undefined;
@@ -89,6 +90,17 @@
         navigator.clipboard.writeText(text);
         alert("Copied to clipboard!");
     }
+
+    // Give up
+    let gaveUp = false;
+    const onGiveUp = () => {
+        if (word) {
+            gaveUp = true;
+        } else {
+            navigate("/");
+        }
+
+    }
 </script>
 
 <div id="Game" in:fade="{{duration: 300, delay:500}}" out:fade>
@@ -97,22 +109,28 @@
             <GuessDisplay guess={guess}/>
         {/each}
     </div>
-    <HintButton {guesses} />
-    
-    {#if guesses.length >= 1} 
-        <GiveUpButton {word} />
+    {#if !(won || gaveUp)}
+    <ExpandButton>
+        <GiveUpButton {onGiveUp} />
+        <HintButton {guesses} />
+    </ExpandButton>
     {/if}
 
-    {#if won}
+    {#if won || gaveUp}
         <div 
             in:fade="{{duration: 300, delay:500}}"
             out:fade
             id="congrats-box"> 
-            <h3>Congratulations!</h3>
-            <p>You completed word #{id} in {guesses.length} {guesses.length === 1 ? "try" : "tries"}.</p>
-            <button on:click={() => shareResult()}>
-                Share 
-            </button>
+            {#if won}
+                <h3>Congratulations!</h3>
+                <p>You completed word #{id} in {guesses.length} {guesses.length === 1 ? "try" : "tries"}.</p>
+                <button on:click={() => shareResult()}>
+                    Share 
+                </button>
+            {:else}
+            <p>The word was:
+            <h3 style="text-transform: uppercase;">{word}</h3>
+            {/if}
             <button on:click={() => navigate("/")}>
                 Home
             </button>

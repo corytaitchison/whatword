@@ -43,7 +43,7 @@
         height: 3.5rem;
 
         position: fixed;
-        right: 1rem;
+        left: 1rem;
         bottom: 1rem;
 
         cursor: pointer;

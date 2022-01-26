@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fade } from 'svelte/transition';
+    import { fly } from 'svelte/transition';
     import { getContext } from 'svelte';
     import type { types } from '../../functions/src/types';
     import { library } from '@fortawesome/fontawesome-svg-core';
@@ -17,7 +17,7 @@
     library.add(faFont);
 </script>
 
-<button transition:fade id="hintButton" on:click={showHints} >
+<button transition:fly="{{y:50}}" id="hintButton" on:click={showHints} >
     <FontAwesomeIcon icon={faFont} />
 </button>
 
@@ -31,14 +31,14 @@
         outline: none;
         background-color: var(--color-primary);
         padding: 0;
-        margin: 0;
+        margin-bottom: 1rem;
 
         width: 3.5rem;
         height: 3.5rem;
 
-        position: fixed;
-        bottom: 1rem;
-        left: 1rem;
+/*        position: fixed;
+        bottom: 5rem;
+        right: 1rem;*/
 
         cursor: pointer;
 
@@ -54,6 +54,8 @@
             width: 2rem;
             height: 2rem;
             font-size: 1.3em;
+            /*bottom: 3.5rem;*/
+            margin-bottom: 0.5rem;
         }
     }
 </style>

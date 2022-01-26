@@ -47,7 +47,7 @@
 
 <Modal styleWindow={{ 'background-color': 'var(--color-bg-main)' }}>
 <main>
-	<h1 on:click={()=>navigate('/')}>What<br>Word<span class="accent">?</span></h1>
+	<h1 class="disable-select">What<br>Word<span class="accent">?</span></h1>
 	{#if maxID === undefined}
 		<Loader />
 	{:else}
@@ -100,7 +100,7 @@
 		text-align:  left;
 		margin-left: 0.5em;
 		margin-bottom:  min(10vw, 80px);
-		cursor: pointer;
+		/*cursor: pointer;*/
 	}
 
 	footer {

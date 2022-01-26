@@ -101,3 +101,12 @@ button:not(:disabled):active {
 	background: var(--color-accent-light);
 	color: var(--color-bg-main);
 }
+
+.disable-select {
+	user-select: none; /* supported by Chrome and Opera */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	cursor: default;
+}

@@ -1,23 +1,23 @@
 <script lang="ts">
-    import { fade } from 'svelte/transition';
+    import { fly } from 'svelte/transition';
     import { getContext } from 'svelte';
     import { library } from '@fortawesome/fontawesome-svg-core';
-    import { faEye } from '@fortawesome/free-solid-svg-icons';
+    import { faFlag } from '@fortawesome/free-solid-svg-icons';
     import { FontAwesomeIcon } from 'fontawesome-svelte';
 
     import GiveUp from './GiveUp.svelte'
 
-    export let word: string | undefined;
+    export let onGiveUp: () => void;
 
     // Modal for Word Hints
     const { open } = getContext('simple-modal');
-    const showHints = () => open(GiveUp, {word : word});
+    const onClick = () => open(GiveUp, {onGiveUp});
 
-    library.add(faEye);
+    library.add(faFlag);
 </script>
 
-<button transition:fade id="giveUpButton" on:click={showHints} >
-    <FontAwesomeIcon icon={faEye} />
+<button transition:fly="{{y:90}}" id="giveUpButton" on:click={onClick} >
+    <FontAwesomeIcon icon={faFlag} />
 </button>
 
 <style>
@@ -30,14 +30,14 @@
         outline: none;
         background-color: var(--color-primary);
         padding: 0;
-        margin: 0;
+        margin-bottom: 1rem;
 
         width: 3.5rem;
         height: 3.5rem;
 
-        position: fixed;
-        bottom: 1rem;
-        right: 1rem;
+/*        position: fixed;
+        bottom: 9rem;
+        right: 1rem;*/
 
         cursor: pointer;
 
@@ -53,6 +53,8 @@
             width: 2rem;
             height: 2rem;
             font-size: 1.3em;
+            /*bottom: 6rem;*/
+            margin-bottom: 0.5rem;
         }
     }
 </style>

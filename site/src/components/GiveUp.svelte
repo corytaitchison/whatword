@@ -1,12 +1,25 @@
 <script lang="ts">
-    import { fade } from 'svelte/transition';
+    import { getContext } from 'svelte';
+    
+    export let onGiveUp: () => void;
 
-    export let word: string | undefined;
+    const { close } = getContext('simple-modal');
+    const onCancel = close;
+    const onAccept = () => {
+        onGiveUp();
+        close();
+    }
+
 </script>
 
 <div id="answer-modal">
-<h1 > The Answer Is:</h1>
-<div class="answer-wrapper">{word}</div>
+    <h1 > Give up?</h1>
+    <button on:click={onCancel} id="no"> 
+        No 
+    </button>
+    <button on:click={onAccept}> 
+        Yes 
+    </button>
 </div>
 
 <style>
@@ -15,17 +28,17 @@
         text-align: center;
     }
 
-    .answer-wrapper {
-        color: var(--color-accent-light);
-        text-align: center;
-        text-transform: uppercase;
-        font-size: calc(3em + 2vw);
-        font-weight: 800;
+    h1 {
+        color: var(--color-accent-red);
     }
 
-    @media (max-width: 350px) {
-        .answer-wrapper {
-            font-size: 2em;
-        }
+    #no:hover {
+        background-color: var(--color-accent-red);
+        border-color: var(--color-accent-red);
+    }
+
+    button {
+        width: 4em;
+        margin: 1em;
     }
 </style>
