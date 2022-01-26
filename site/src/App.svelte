@@ -17,6 +17,8 @@
 	import Game from './routes/Game.svelte';
 	import Home from './routes/Home.svelte';
 	import Playlists from './routes/Playlists.svelte';
+	import Privacy from './routes/Privacy.svelte';
+	import Terms from './routes/Terms.svelte';
 
 	// Manage authentication 
  	let user: User;
@@ -65,14 +67,8 @@
                 Home
             </button>
 		</Route>
-		<Route path="legal"> 
-			<div style="margin: 3em">			
-				These pages don't exist yet!
-			</div>
-            <button on:click={() => navigate("/")}>
-                Back
-            </button>
-        </Route>
+		<Route path="privacy" component="{Privacy}" />
+		<Route path="terms" component="{Terms}" />
 		<Route>
 			<Home {maxID} /> 
 		</Route> 
@@ -80,7 +76,7 @@
 	<ProfileButton {auth} {login} {user} />
 	{/if}
 	<footer>
-		<a href="/about">About</a>. <a href="/legal">Privacy</a>. <a href="/legal">Terms</a>.
+		<a href="/about">About</a>. <a href="/privacy">Privacy</a>. <a href="/terms">Terms</a>.
 	</footer>
 </main>
 </Modal>
