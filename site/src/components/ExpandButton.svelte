@@ -6,14 +6,17 @@
 
     let open: Boolean = false;
 
-    const expand = () => {
-        open = !open; 
+    const expand = (_open: Boolean) => {
+        open = _open; 
     };
+
+    const isMobile = ('ontouchstart' in document.documentElement && navigator.userAgent.match(/Mobi/));
+    const onHover = (_open: Boolean) => !isMobile && expand(_open);
 
     library.add(faPlus);
 </script>
 
-<div id="expandDiv" on:mouseenter={expand} on:mouseleave={expand}>
+<div id="expandDiv" on:mouseenter={() => onHover(true)} on:mouseleave={() => onHover(false)}>
 
 {#if open} 
     <div id="buttonList">
@@ -21,7 +24,7 @@
     </div>
 {/if}
 
-<button transition:fade id="expandButton" class={open ? "open" : "closed"} on:click={expand}>
+<button transition:fade id="expandButton" class={open ? "open" : "closed"} on:click={() => expand(!open)}>
     <FontAwesomeIcon icon={faPlus} />
 </button>
 
